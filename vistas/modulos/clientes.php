@@ -62,7 +62,6 @@ if($_SESSION["perfil"] == "Especial"){
            <th>Email</th>
            <th>Teléfono</th>
            <th>Dirección</th>
-           <th>Fecha nacimiento</th> 
            <th>Total compras</th>
            <th>Última compra</th>
            <th>Ingreso al sistema</th>
@@ -96,9 +95,7 @@ if($_SESSION["perfil"] == "Especial"){
 
                     <td>'.$value["telefono"].'</td>
 
-                    <td>'.$value["direccion"].'</td>
-
-                    <td>'.$value["fecha_nacimiento"].'</td>             
+                    <td>'.$value["direccion"].'</td>        
 
                     <td>'.$value["compras"].'</td>
 
@@ -244,7 +241,7 @@ MODAL AGREGAR CLIENTE
 
              <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
             
-            <div class="form-group">
+           <!--  <div class="form-group">
               
               <div class="input-group">
               
@@ -254,7 +251,7 @@ MODAL AGREGAR CLIENTE
 
               </div>
 
-            </div>
+            </div> -->
   
           </div>
 
@@ -391,7 +388,7 @@ MODAL EDITAR CLIENTE
 
              <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
             
-            <div class="form-group">
+           <!--  <div class="form-group">
               
               <div class="input-group">
               
@@ -401,7 +398,7 @@ MODAL EDITAR CLIENTE
 
               </div>
 
-            </div>
+            </div> -->
   
           </div>
 
