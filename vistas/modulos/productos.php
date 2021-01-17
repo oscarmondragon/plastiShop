@@ -344,7 +344,7 @@ MODAL EDITAR PRODUCTO
               
                 <span class="input-group-addon"><i class="fa fa-code"></i></span> 
 
-                <input type="text" class="form-control input-lg" id="editarCodigo" name="editarCodigo" readonly required>
+                <input type="text" class="form-control input-lg" id="editarCodigo" name="editarCodigo" readonly  required>
 
               </div>
 
@@ -358,7 +358,7 @@ MODAL EDITAR PRODUCTO
               
                 <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span> 
 
-                <input type="text" class="form-control input-lg" id="editarDescripcion" name="editarDescripcion" required>
+                <input type="text" class="form-control input-lg" id="editarDescripcion" name="editarDescripcion" placeholder="Ingresar descripción"  required>
 
               </div>
 
@@ -372,7 +372,7 @@ MODAL EDITAR PRODUCTO
               
                 <span class="input-group-addon"><i class="fa fa-check"></i></span> 
 
-                <input type="number" class="form-control input-lg" id="editarStock" name="editarStock" min="0" required>
+                <input type="number" class="form-control input-lg" id="editarStock" name="editarStock" min="0" placeholder="Stock" required>
 
               </div>
 
@@ -388,7 +388,7 @@ MODAL EDITAR PRODUCTO
                   
                     <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span> 
 
-                    <input type="number" class="form-control input-lg" id="editarPrecioCompra" name="editarPrecioCompra" step="any" min="0" required>
+                    <input type="number" class="form-control input-lg" id="editarPrecioCompra" name="editarPrecioCompra" step="any" min="0"  placeholder="Precio de compra" required>
 
                   </div>
 
@@ -402,7 +402,7 @@ MODAL EDITAR PRODUCTO
                   
                     <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
 
-                    <input type="number" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" step="any" min="0"  required>
+                    <input type="number" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" step="any" min="0"  placeholder="Precio de venta" required>
 
                   </div>
                 
@@ -419,7 +419,7 @@ MODAL EDITAR PRODUCTO
                   
                     <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
 
-                    <input type="number" class="form-control input-lg" id="editarPrecioEspecial" name="editarPrecioEspecial" step="any" min="0"  required>
+                    <input type="number" class="form-control input-lg" id="editarPrecioEspecial" name="editarPrecioEspecial" step="any" min="0" placeholder="Precio especial"  required>
 
                   </div>
                 

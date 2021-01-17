@@ -231,7 +231,7 @@ MODAL EDITAR CATEGORÍA
               
                 <span class="input-group-addon"><i class="fa fa-th"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="editarCategoria" id="editarCategoria" required>
+                <input type="text" class="form-control input-lg" name="editarCategoria" id="editarCategoria" placeholder="Ingresar categoría"  required>
 
                  <input type="hidden"  name="idCategoria" id="idCategoria" required>
 
