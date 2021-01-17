@@ -90,6 +90,7 @@ class TablaProductos{
 			      "'.$stock.'",
 			      "'.$productos[$i]["precio_compra"].'",
 			      "'.$productos[$i]["precio_venta"].'",
+			      "'.$productos[$i]["precio_especial"].'",
 			      "'.$productos[$i]["fecha"].'",
 			      "'.$botones.'"
 			    ],';

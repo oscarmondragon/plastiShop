@@ -217,7 +217,8 @@ MODAL AGREGAR PRODUCTO
                     <input type="number" class="form-control input-lg" id="nuevoPrecioVenta" name="nuevoPrecioVenta" step="any" min="0" placeholder="Precio de venta" required>
 
                   </div>
-                
+                </div>
+                </div>
                   <br>
                   <!-- ENTRADA PARA PRECIO ESPECIAL -->
 
@@ -230,42 +231,14 @@ MODAL AGREGAR PRODUCTO
                   <input type="number" class="form-control input-lg" id="nuevoPrecioEspecial" name="nuevoPrecioEspecial" step="any" min="0" placeholder="Precio especial" required>
 
                 </div>
-              
+            
+             
                 <br>
 
-                  <!-- CHECKBOX PARA PORCENTAJE -->
-
-                  <div class="col-xs-6">
-                    
-                    <div class="form-group">
-                      
-                      <label>
-                        
-                        <input type="checkbox" class="minimal porcentaje" checked>
-                        Utilizar procentaje
-                      </label>
-
-                    </div>
-
-                  </div>
-
-                  <!-- ENTRADA PARA PORCENTAJE -->
-
-                  <div class="col-xs-6" style="padding:0">
-                    
-                    <div class="input-group">
-                      
-                      <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
-
-                      <span class="input-group-addon"><i class="fa fa-percent"></i></span>
-
-                    </div>
-
-                  </div>
 
                 </div>
 
-            </div>
+          </div>
 
             <!-- ENTRADA PARA SUBIR FOTO -->
 
@@ -283,7 +256,7 @@ MODAL AGREGAR PRODUCTO
 
           </div>
 
-        </div>
+       
 
         <!--=====================================
         PIE DEL MODAL
@@ -429,44 +402,30 @@ MODAL EDITAR PRODUCTO
                   
                     <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
 
-                    <input type="number" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" step="any" min="0" readonly required>
+                    <input type="number" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" step="any" min="0"  required>
 
                   </div>
                 
                   <br>
 
-                  <!-- CHECKBOX PARA PORCENTAJE -->
-
-                  <div class="col-xs-6">
-                    
-                    <div class="form-group">
-                      
-                      <label>
-                        
-                        <input type="checkbox" class="minimal porcentaje" checked>
-                        Utilizar procentaje
-                      </label>
-
-                    </div>
-
-                  </div>
-
-                  <!-- ENTRADA PARA PORCENTAJE -->
-
-                  <div class="col-xs-6" style="padding:0">
-                    
-                    <div class="input-group">
-                      
-                      <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
-
-                      <span class="input-group-addon"><i class="fa fa-percent"></i></span>
-
-                    </div>
-
-                  </div>
-
                 </div>
 
+            </div>
+            <!-- ENTRADA PARA PRECIO ESPECIAL -->
+            <div class="form-group row">
+              <div class="col-xs-6">
+                
+                  <div class="input-group">
+                  
+                    <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
+
+                    <input type="number" class="form-control input-lg" id="editarPrecioEspecial" name="editarPrecioEspecial" step="any" min="0"  required>
+
+                  </div>
+                
+                  <br>
+
+                </div>
             </div>
 
             <!-- ENTRADA PARA SUBIR FOTO -->
