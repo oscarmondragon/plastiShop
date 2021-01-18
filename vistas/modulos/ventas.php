@@ -94,11 +94,10 @@ if($xml){
          <tr>
            
            <th style="width:10px">#</th>
-           <th>Código factura</th>
+           <th>Código venta</th>
            <th>Cliente</th>
            <th>Vendedor</th>
            <th>Forma de pago</th>
-           <th>Neto</th>
            <th>Total</th> 
            <th>Fecha</th>
            <th>Acciones</th>
@@ -149,8 +148,6 @@ if($xml){
 
                   <td>'.$value["metodo_pago"].'</td>
 
-                  <td>$ '.number_format($value["neto"],2).'</td>
-
                   <td>$ '.number_format($value["total"],2).'</td>
 
                   <td>'.$value["fecha"].'</td>
@@ -159,7 +156,7 @@ if($xml){
 
                     <div class="btn-group">
 
-                      <a class="btn btn-success" href="index.php?ruta=ventas&xml='.$value["codigo"].'">xml</a>
+                      
                         
                       <button class="btn btn-info btnImprimirFactura" codigoVenta="'.$value["codigo"].'">
 

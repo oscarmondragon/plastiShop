@@ -55,7 +55,7 @@
 
                     $cliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
 
-                    $porcentajeImpuesto = $venta["impuesto"] * 100 / $venta["neto"];
+                  //  $porcentajeImpuesto = $venta["impuesto"] * 100 / $venta["neto"];
 
 
                 ?>
@@ -214,7 +214,7 @@
                       <thead>
 
                         <tr>
-                          <th>Impuesto</th>
+                          <th></th>
                           <th>Total</th>      
                         </tr>
 
@@ -228,13 +228,8 @@
                             
                             <div class="input-group">
                            
-                              <input type="number" class="form-control input-lg" min="0" id="nuevoImpuestoVenta" name="nuevoImpuestoVenta" value="<?php echo $porcentajeImpuesto; ?>" required>
-
-                               <input type="hidden" name="nuevoPrecioImpuesto" id="nuevoPrecioImpuesto" value="<?php echo $venta["impuesto"]; ?>" required>
 
                                <input type="hidden" name="nuevoPrecioNeto" id="nuevoPrecioNeto" value="<?php echo $venta["neto"]; ?>" required>
-
-                              <span class="input-group-addon"><i class="fa fa-percent"></i></span>
                         
                             </div>
 

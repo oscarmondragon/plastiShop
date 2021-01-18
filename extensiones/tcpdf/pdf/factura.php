@@ -27,8 +27,6 @@ $respuestaVenta = ControladorVentas::ctrMostrarVentas($itemVenta, $valorVenta);
 
 $fecha = substr($respuestaVenta["fecha"],0,-8);
 $productos = json_decode($respuestaVenta["productos"], true);
-$neto = number_format($respuestaVenta["neto"],2);
-$impuesto = number_format($respuestaVenta["impuesto"],2);
 $total = number_format($respuestaVenta["total"],2);
 
 //TRAEMOS LA INFORMACIÓN DEL CLIENTE
@@ -71,19 +69,20 @@ $bloque1 = <<<EOF
 				Fecha: $fecha
 
 				<br><br>
-				Inventory System
-				
+				PLASTI-SHOP
 				<br>
-				NIT: 71.759.963-9
+				JARCIERIA-PLASTICO-COCINA
 
 				<br>
-				Dirección: Calle 44B 92-11
+				Dirección: Calle 02 de Noviembre,
+				<br>
+				Santiago Acutzilapan
 
 				<br>
-				Teléfono: 300 786 52 49
+				Teléfono: 712 160 53 75
 
 				<br>
-				FACTURA N.$valorVenta
+				COMPRA N.$valorVenta
 
 				<br><br>					
 				Cliente: $respuestaCliente[nombre]
@@ -152,30 +151,6 @@ $bloque3 = <<<EOF
 
 	<tr>
 	
-		<td style="width:80px;">
-			 NETO: 
-		</td>
-
-		<td style="width:80px;">
-			$ $neto
-		</td>
-
-	</tr>
-
-	<tr>
-	
-		<td style="width:80px;">
-			 IMPUESTO: 
-		</td>
-
-		<td style="width:80px;">
-			$ $impuesto
-		</td>
-
-	</tr>
-
-	<tr>
-	
 		<td style="width:160px;">
 			 --------------------------
 		</td>
@@ -199,7 +174,7 @@ $bloque3 = <<<EOF
 		<td style="width:160px;">
 			<br>
 			<br>
-			Muchas gracias por su compra
+			¡Muchas gracias por su compra!
 		</td>
 
 	</tr>
@@ -216,7 +191,7 @@ $pdf->writeHTML($bloque3, false, false, false, false, '');
 //SALIDA DEL ARCHIVO 
 
 //$pdf->Output('factura.pdf', 'D');
-$pdf->Output('factura.pdf');
+$pdf->Output('comprobanteVenta.pdf');
 
 }
 

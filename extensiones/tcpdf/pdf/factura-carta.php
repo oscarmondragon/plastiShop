@@ -27,8 +27,6 @@ $respuestaVenta = ControladorVentas::ctrMostrarVentas($itemVenta, $valorVenta);
 
 $fecha = substr($respuestaVenta["fecha"],0,-8);
 $productos = json_decode($respuestaVenta["productos"], true);
-$neto = number_format($respuestaVenta["neto"],2);
-$impuesto = number_format($respuestaVenta["impuesto"],2);
 $total = number_format($respuestaVenta["total"],2);
 
 //TRAEMOS LA INFORMACIÓN DEL CLIENTE
@@ -69,11 +67,11 @@ $bloque1 = <<<EOF
 				
 				<div style="font-size:8.5px; text-align:right; line-height:15px;">
 					
-					<br>
-					NIT: 71.759.963-9
 
 					<br>
-					Dirección: Calle 44B 92-11
+					Dirección: Calle 02 de Noviembre,
+					<br>
+					Santiago Acutzilapan
 
 				</div>
 
@@ -84,10 +82,8 @@ $bloque1 = <<<EOF
 				<div style="font-size:8.5px; text-align:right; line-height:15px;">
 					
 					<br>
-					Teléfono: 300 786 52 49
+					Teléfono: 712 160 53 75
 					
-					<br>
-					ventas@inventorysystem.com
 
 				</div>
 				
@@ -242,13 +238,7 @@ $bloque5 = <<<EOF
 		
 			<td style="border-right: 1px solid #666; color:#333; background-color:white; width:340px; text-align:center"></td>
 
-			<td style="border: 1px solid #666;  background-color:white; width:100px; text-align:center">
-				Neto:
-			</td>
-
-			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">
-				$ $neto
-			</td>
+			
 
 		</tr>
 
@@ -256,13 +246,6 @@ $bloque5 = <<<EOF
 
 			<td style="border-right: 1px solid #666; color:#333; background-color:white; width:340px; text-align:center"></td>
 
-			<td style="border: 1px solid #666; background-color:white; width:100px; text-align:center">
-				Impuesto:
-			</td>
-		
-			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">
-				$ $impuesto
-			</td>
 
 		</tr>
 
@@ -293,7 +276,7 @@ $pdf->writeHTML($bloque5, false, false, false, false, '');
 //SALIDA DEL ARCHIVO 
 
 //$pdf->Output('factura.pdf', 'D');
-$pdf->Output('factura.pdf');
+$pdf->Output('Comprobante.pdf');
 
 }
 

@@ -188,7 +188,7 @@ if($_SESSION["perfil"] == "Especial"){
                       <thead>
 
                         <tr>
-                          <th>Impuesto</th>
+                          <th></th>
                           <th>Total</th>      
                         </tr>
 
@@ -202,13 +202,9 @@ if($_SESSION["perfil"] == "Especial"){
                             
                             <div class="input-group">
                            
-                              <input type="number" class="form-control input-lg" min="0" id="nuevoImpuestoVenta" name="nuevoImpuestoVenta" placeholder="0" required>
-
-                               <input type="hidden" name="nuevoPrecioImpuesto" id="nuevoPrecioImpuesto" required>
 
                                <input type="hidden" name="nuevoPrecioNeto" id="nuevoPrecioNeto" required>
 
-                              <span class="input-group-addon"><i class="fa fa-percent"></i></span>
                         
                             </div>
 
@@ -246,14 +242,24 @@ if($_SESSION["perfil"] == "Especial"){
                 ======================================-->
 
                 <div class="form-group row">
+                    <div class="col-xs-12" style="padding-right:0px">
+                       <div class="col-xs-4">
+                        <label>Método de pago</label>
+                       </div>
+                       <div class="col-xs-4">
+                        <label>Efectivo</label>
+                       </div>
+                       <div class="col-xs-4">
+                        <label>Cambio</label>
+                       </div>
+                    </div>
                   
-                  <div class="col-xs-6" style="padding-right:0px">
+                  <div class="col-xs-4" style="padding-right:0px">
                     
                      <div class="input-group">
                   
                       <select class="form-control" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
-                        <option value="">Seleccione método de pago</option>
-                        <option value="Efectivo">Efectivo</option>
+                        <option selected="true" value="Efectivo">Efectivo</option>
                         <option value="TC">Tarjeta Crédito</option>
                         <option value="TD">Tarjeta Débito</option>                  
                       </select>    
@@ -262,7 +268,32 @@ if($_SESSION["perfil"] == "Especial"){
 
                   </div>
 
-                  <div class="cajasMetodoPago"></div>
+                  <div class="cajasMetodoPago">
+                     <div class="col-xs-4">
+
+                      <div class="input-group">
+                    
+
+                        <span class="input-group-addon"><i class="ion ion-social-usd"></i></span> 
+
+                        <input type="text" class="form-control" id="nuevoValorEfectivo" name="nuevoValorEfectivo" placeholder="000000" required>
+
+                      </div>
+
+                    </div>
+
+                   <div class="col-xs-4" id="capturarCambioEfectivo" style="padding-left:0px">
+
+                    <div class="input-group">
+
+                    <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+
+                      <input type="text" class="form-control" id="nuevoCambioEfectivo" name="nuevoCambioEfectivo" placeholder="000000" readonly required>
+
+                    </div>
+
+                   </div>
+                  </div>
 
                   <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
 
@@ -389,7 +420,7 @@ MODAL AGREGAR CLIENTE
               
                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
 
-                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar documento" required>
+                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar identificador" required>
 
               </div>
 
@@ -437,19 +468,6 @@ MODAL AGREGAR CLIENTE
 
             </div>
 
-             <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
-            
-            <div class="form-group">
-              
-              <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
-
-                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
-
-              </div>
-
-            </div>
   
           </div>
 

@@ -13,6 +13,14 @@ CARGAR LA TABLA DINÁMICA DE VENTAS
 
 // })// 
 
+/*-----------------------------------
+Ejecutar el metodo de pago
+----------------------------------*/
+listarMetodos();
+
+/*-------------------------------------
+Agregando idioma español a la tabla
+--------------*/
 $('.tablaVentas').DataTable( {
     "ajax": "ajax/datatable-ventas.ajax.php",
     "deferRender": true,
@@ -143,7 +151,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
 	        // AGREGAR IMPUESTO
 
-	        agregarImpuesto()
+	        //agregarImpuesto()
 
 	        // AGRUPAR PRODUCTOS EN FORMATO JSON
 
@@ -224,7 +232,7 @@ $(".formularioVenta").on("click", "button.quitarProducto", function(){
 
 	if($(".nuevoProducto").children().length == 0){
 
-		$("#nuevoImpuestoVenta").val(0);
+		//$("#nuevoImpuestoVenta").val(0);
 		$("#nuevoTotalVenta").val(0);
 		$("#totalVenta").val(0);
 		$("#nuevoTotalVenta").attr("total",0);
@@ -237,7 +245,7 @@ $(".formularioVenta").on("click", "button.quitarProducto", function(){
 
     	// AGREGAR IMPUESTO
 	        
-        agregarImpuesto()
+        //agregarImpuesto()
 
         // AGRUPAR PRODUCTOS EN FORMATO JSON
 
@@ -342,7 +350,7 @@ $(".btnAgregarProducto").click(function(){
 
     		// AGREGAR IMPUESTO
 	        
-	        agregarImpuesto()
+	        //agregarImpuesto()
 
 	        // PONER FORMATO AL PRECIO DE LOS PRODUCTOS
 
@@ -448,7 +456,7 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function(){
 
 	// AGREGAR IMPUESTO
 	        
-    agregarImpuesto()
+   // agregarImpuesto()
 
     // AGRUPAR PRODUCTOS EN FORMATO JSON
 
@@ -492,7 +500,7 @@ function sumarTotalPrecios(){
 FUNCIÓN AGREGAR IMPUESTO
 =============================================*/
 
-function agregarImpuesto(){
+/*function agregarImpuesto(){
 
 	var impuesto = $("#nuevoImpuestoVenta").val();
 	var precioTotal = $("#nuevoTotalVenta").attr("total");
@@ -509,17 +517,17 @@ function agregarImpuesto(){
 
 	$("#nuevoPrecioNeto").val(precioTotal);
 
-}
+}*/
 
 /*=============================================
 CUANDO CAMBIA EL IMPUESTO
 =============================================*/
 
-$("#nuevoImpuestoVenta").change(function(){
+/*$("#nuevoImpuestoVenta").change(function(){
 
 	agregarImpuesto();
 
-});
+});*/
 
 /*=============================================
 FORMATO AL PRECIO FINAL

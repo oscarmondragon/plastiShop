@@ -99,7 +99,7 @@ class ControladorVentas{
 
 			$item1b = "ultima_compra";
 
-			date_default_timezone_set('America/Bogota');
+			date_default_timezone_set('America/Mexico_City');
 
 			$fecha = date('Y-m-d');
 			$hora = date('H:i:s');
@@ -117,8 +117,6 @@ class ControladorVentas{
 						   "id_cliente"=>$_POST["seleccionarCliente"],
 						   "codigo"=>$_POST["nuevaVenta"],
 						   "productos"=>$_POST["listaProductos"],
-						   "impuesto"=>$_POST["nuevoPrecioImpuesto"],
-						   "neto"=>$_POST["nuevoPrecioNeto"],
 						   "total"=>$_POST["totalVenta"],
 						   "metodo_pago"=>$_POST["listaMetodoPago"]);
 
@@ -187,17 +185,21 @@ class ControladorVentas{
 
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/			
 				
-				$printer->text("NETO: $ ".number_format($_POST["nuevoPrecioNeto"],2)."\n"); //ahora va el neto
+				//$printer->text("NETO: $ ".number_format($_POST["nuevoPrecioNeto"],2)."\n"); //ahora va el neto
 
-				$printer->text("IMPUESTO: $ ".number_format($_POST["nuevoPrecioImpuesto"],2)."\n"); //ahora va el impuesto
+				//$printer->text("IMPUESTO: $ ".number_format($_POST["nuevoPrecioImpuesto"],2)."\n"); //ahora va el impuesto
 
 				$printer->text("--------\n");
-
-
 				
 				$printer->text("TOTAL: $ ".number_format($_POST["totalVenta"],2)."\n"); //ahora va el total
+				$printer->text("--------\n");
 
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/	
+				$printer->text("Efectivo: $ ".number_format($_POST["nuevoValorEfectivo"],2)."\n"); //Efectivo con el que pagó
+				$printer->text("Cambio: $ ".number_format($_POST["nuevoCambioEfectivo"],2)."\n"); //Efectivo con el que pagó
+
+				$printer -> feed(1); //Alimentamos el papel 1 vez*/	
+
 
 				$printer->text("¡Muchas gracias por su compra!"); //Podemos poner también un pie de página
 
@@ -358,7 +360,7 @@ class ControladorVentas{
 
 				$item1b_2 = "ultima_compra";
 
-				date_default_timezone_set('America/Bogota');
+				date_default_timezone_set('America/Mexico_City');
 
 				$fecha = date('Y-m-d');
 				$hora = date('H:i:s');
@@ -376,8 +378,6 @@ class ControladorVentas{
 						   "id_cliente"=>$_POST["seleccionarCliente"],
 						   "codigo"=>$_POST["editarVenta"],
 						   "productos"=>$listaProductos,
-						   "impuesto"=>$_POST["nuevoPrecioImpuesto"],
-						   "neto"=>$_POST["nuevoPrecioNeto"],
 						   "total"=>$_POST["totalVenta"],
 						   "metodo_pago"=>$_POST["listaMetodoPago"]);
 
@@ -616,9 +616,7 @@ class ControladorVentas{
 					<td style='font-weight:bold; border:1px solid #eee;'>CLIENTE</td>
 					<td style='font-weight:bold; border:1px solid #eee;'>VENDEDOR</td>
 					<td style='font-weight:bold; border:1px solid #eee;'>CANTIDAD</td>
-					<td style='font-weight:bold; border:1px solid #eee;'>PRODUCTOS</td>
-					<td style='font-weight:bold; border:1px solid #eee;'>IMPUESTO</td>
-					<td style='font-weight:bold; border:1px solid #eee;'>NETO</td>		
+					<td style='font-weight:bold; border:1px solid #eee;'>PRODUCTOS</td>		
 					<td style='font-weight:bold; border:1px solid #eee;'>TOTAL</td>		
 					<td style='font-weight:bold; border:1px solid #eee;'>METODO DE PAGO</td	
 					<td style='font-weight:bold; border:1px solid #eee;'>FECHA</td>		
@@ -650,9 +648,7 @@ class ControladorVentas{
 		 		
 		 		}
 
-		 		echo utf8_decode("</td>
-					<td style='border:1px solid #eee;'>$ ".number_format($item["impuesto"],2)."</td>
-					<td style='border:1px solid #eee;'>$ ".number_format($item["neto"],2)."</td>	
+		 		echo utf8_decode("</td>	
 					<td style='border:1px solid #eee;'>$ ".number_format($item["total"],2)."</td>
 					<td style='border:1px solid #eee;'>".$item["metodo_pago"]."</td>
 					<td style='border:1px solid #eee;'>".substr($item["fecha"],0,10)."</td>		
