@@ -61,16 +61,48 @@ AGREGANDO PRODUCTOS A LA VENTA DESDE LA TABLA
 
 $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
-	var idProducto = $(this).attr("idProducto");
+	
+	//OBTENER DATOS DEL CLIENTE
+
+	var idCliente = $("#seleccionarCliente option:selected").val();
+
+	if(idCliente == "0"){
+		swal({
+			      title: "Selecciona el cliente, antes de agregar productos.",
+			      type: "error",
+			      confirmButtonText: "¡Cerrar!"
+			    });	
+
+	} else { // Ya se ha seleccionado el cliente
+
+		var idProducto = $(this).attr("idProducto");
 
 	$(this).removeClass("btn-primary agregarProducto");
 
 	$(this).addClass("btn-default");
 
+	//OBTENER DATOS DEL PRODUCTO AGREGADO
 	var datos = new FormData();
     datos.append("idProducto", idProducto);
 
-     $.ajax({
+
+
+	var datosCliente = new FormData();
+    datosCliente.append("idCliente", idCliente);
+    $.ajax({
+
+     	url:"ajax/clientes.ajax.php",
+      	method: "POST",
+      	data: datosCliente,
+      	cache: false,
+      	contentType: false,
+      	processData: false,
+      	dataType:"json",
+      	success:function(respuesta){
+
+      	    var tipoCliente = respuesta["tipoCliente"];
+          	
+      	     $.ajax({
 
      	url:"ajax/productos.ajax.php",
       	method: "POST",
@@ -83,7 +115,13 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
       	    var descripcion = respuesta["descripcion"];
           	var stock = respuesta["stock"];
-          	var precio = respuesta["precio_venta"];
+          	var precio = 0;
+          	if(tipoCliente == true){
+          		 precio = respuesta["precio_especial"];
+          	} else {
+          		precio = respuesta["precio_venta"];
+          	}
+          
 
           	/*=============================================
           	EVITAR AGREGAR PRODUTO CUANDO EL STOCK ESTÁ EN CERO
@@ -167,6 +205,13 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
       	}
 
      })
+
+      	}
+
+     })
+}
+
+    
 
 });
 

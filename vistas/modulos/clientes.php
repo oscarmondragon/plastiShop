@@ -59,6 +59,7 @@ if($_SESSION["perfil"] == "Especial"){
            <th style="width:10px">#</th>
            <th>Nombre</th>
            <th>Identificador ID</th>
+           <th>Tipo</th>
            <th>Email</th>
            <th>Teléfono</th>
            <th>Dirección</th>
@@ -80,9 +81,14 @@ if($_SESSION["perfil"] == "Especial"){
 
           $clientes = ControladorClientes::ctrMostrarClientes($item, $valor);
 
+
           foreach ($clientes as $key => $value) {
             
-
+              if($value["tipoCliente"] == 1){
+                $value["tipoCliente"] = "Especial";
+              } else {
+                $value["tipoCliente"] = "Mayoreo";
+              }
             echo '<tr>
 
                     <td>'.($key+1).'</td>
@@ -90,6 +96,8 @@ if($_SESSION["perfil"] == "Especial"){
                     <td>'.$value["nombre"].'</td>
 
                     <td>'.$value["documento"].'</td>
+
+                    <td>'.$value["tipoCliente"].'</td>
 
                     <td>'.$value["email"].'</td>
 
@@ -252,6 +260,24 @@ MODAL AGREGAR CLIENTE
               </div>
 
             </div> -->
+              
+             <!-- ENTRADA PARA TIPO DE CLIENTE-->
+            <div class="form-group">
+                  
+                  <div class="input-group">
+                    
+                    <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                    
+                    <select class="form-control" id="seleccionartipoCliente" name="seleccionartipoCliente" required>
+
+                    <option value="0">Mayoreo</option>
+                     <option value="1">Especial</option>
+
+                    </select>
+                    
+                  </div>
+                
+                </div>
   
           </div>
 
@@ -385,6 +411,24 @@ MODAL EDITAR CLIENTE
               </div>
 
             </div>
+
+             <!-- ENTRADA PARA TIPO DE CLIENTE-->
+            <div class="form-group">
+                  
+                  <div class="input-group">
+                    
+                    <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                    
+                    <select class="form-control" id="editartipoCliente" name="editartipoCliente" required>
+
+                    <option value="0">Mayoreo</option>
+                     <option value="1">Especial</option>
+
+                    </select>
+                    
+                  </div>
+                
+                </div>
 
              <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
             
