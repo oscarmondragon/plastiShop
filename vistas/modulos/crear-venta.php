@@ -345,6 +345,7 @@ if($_SESSION["perfil"] == "Especial"){
                   <th>Imagen</th>
                   <th>Código</th>
                   <th>Descripcion</th>
+                  <th>Precio mayoreo</th>
                   <th>Stock</th>
                   <th>Acciones</th>
                 </tr>
