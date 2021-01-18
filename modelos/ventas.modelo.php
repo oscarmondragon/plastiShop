@@ -182,7 +182,7 @@ class ModeloVentas{
 
 	static public function mdlSumaTotalVentas($tabla){	
 
-		$stmt = Conexion::conectar()->prepare("SELECT SUM(neto) as total FROM $tabla");
+		$stmt = Conexion::conectar()->prepare("SELECT SUM(total) as total FROM $tabla");
 
 		$stmt -> execute();
 

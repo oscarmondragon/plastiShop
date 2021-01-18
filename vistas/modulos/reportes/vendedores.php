@@ -19,7 +19,7 @@ foreach ($ventas as $key => $valueVentas) {
         array_push($arrayVendedores, $valueUsuarios["nombre"]);
 
         #Capturamos las nombres y los valores netos en un mismo array
-        $arraylistaVendedores = array($valueUsuarios["nombre"] => $valueVentas["neto"]);
+        $arraylistaVendedores = array($valueUsuarios["nombre"] => $valueVentas["total"]);
 
          #Sumamos los netos de cada vendedor
 
