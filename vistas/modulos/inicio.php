@@ -84,18 +84,36 @@
            
           <?php
 
-          if($_SESSION["perfil"] =="Especial" || $_SESSION["perfil"] =="Vendedor"){
+          if($_SESSION["perfil"] =="Vendedor"){
 
              echo '<div class="box box-success">
 
              <div class="box-header">
 
              <h1>Bienvenid@ ' .$_SESSION["nombre"].'</h1>
+             <br>
+             <a href="crear-venta">
+              
+              <i class="fa fa-circle-o"></i>
+              <span>Crear venta</span>
+
+            </a>
 
              </div>
 
              </div>';
 
+          } else if($_SESSION["perfil"] =="Especial"){
+             echo '<div class="box box-success">
+
+             <div class="box-header">
+
+             <h1>Bienvenid@ ' .$_SESSION["nombre"].'</h1>
+             
+
+             </div>
+
+             </div>';
           }
 
           ?>
