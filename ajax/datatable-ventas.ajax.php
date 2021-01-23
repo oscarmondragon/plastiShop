@@ -57,8 +57,31 @@ class TablaProductosVentas{
 		  	/*=============================================
  	 		TRAEMOS LAS ACCIONES
   			=============================================*/ 
+  			$botones =  "<div class='btn-group'><button class='btn btn-primary btnEditarProducto agregarProducto recuperarBoton' idProducto='".$productos[$i]["id"]."'>Agregar</button><select  id=".$productos[$i]["id"]." class='btn btn-default agregarProducto recuperarBoton'>";
+  			//Filtramos los precios segun el producto. si los precios son 0 no se pmostraran en el select
+  			$filtroPrecios ="";
+  			if($productos[$i]["precio_venta"] <> 0){
+  				$filtroPrecios.= "<option value='0' idProducto='".$productos[$i]["id"]."'>Mayoreo</option>";
+  			} 
 
-		  	$botones =  "<div class='btn-group'><button class='btn btn-primary agregarProducto recuperarBoton' idProducto='".$productos[$i]["id"]."'>Agregar</button></div>"; 
+  			if($productos[$i]["precio_especial"] <> 0) {
+  				$filtroPrecios.= "<option value='1' idProducto='".$productos[$i]["id"]."'>Especial</option>";
+  			}
+
+  			if($productos[$i]["precio_bulto"] <> 0) {
+  				$filtroPrecios.= "<option value='2' idProducto='".$productos[$i]["id"]."'>Por bulto</option>";
+  			}
+  			if($productos[$i]["precio_credito"] <> 0) {
+  				$filtroPrecios.= "<option value='3' idProducto='".$productos[$i]["id"]."'>Crédito</option>";
+  			}
+
+				
+  			
+			$botonesCierre ="</select></div>";
+
+			$botones= $botones."".$filtroPrecios."".$botonesCierre;
+
+		  	/*$botones =  "<div class='btn-group'><button class='btn btn-primary btnEditarProducto agregarProducto recuperarBoton' idProducto='".$productos[$i]["id"]."'>Agregar</button><div class='btn-group'><select class='btn btn-warning agregarProducto recuperarBoton' ><option value='0' idProducto='".$productos[$i]["id"]."'>Mayoreo</option><option value='1' idProducto='".$productos[$i]["id"]."'>Especial</option><option value='2' idProducto='".$productos[$i]["id"]."'>Por Bulto</option><option value='3' idProducto='".$productos[$i]["id"]."'>Crédito</option></select></div>"; */
 
 		  	$datosJson .='[
 			      "'.($i+1).'",

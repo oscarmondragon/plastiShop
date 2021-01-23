@@ -58,46 +58,48 @@ $pdf->AddPage('P', 'A7');
 
 $bloque1 = <<<EOF
 
-<table style="font-size:9px; text-align:center">
+<table style="font-size:9px; text-align:left">
 
 	<tr>
 		
-		<td style="width:160px;">
+		<td style="width:170px;">
 	
 			<div>
-			
-				Fecha: $fecha
-
-				<br><br>
 				PLASTI-SHOP
 				<br>
 				JARCIERIA-PLASTICO-COCINA
 
+				<br> <br>
+				CALLE 02 DE NOVIEMBRE S/N,
 				<br>
-				Dirección: Calle 02 de Noviembre,
-				<br>
-				Santiago Acutzilapan
+				SANTIAGO ACUT. ATLACOMULCO MEX.
 
 				<br>
-				Teléfono: 712 160 53 75
+				TEL: 7121643784   &nbsp;&nbsp;  &nbsp;&nbsp;  $fecha
 
 				<br>
-				COMPRA N.$valorVenta
+				C: $valorVenta
 
 				<br><br>					
-				Cliente: $respuestaCliente[nombre]
+				CLIENTE: $respuestaCliente[nombre]
 
 				<br>
-				Vendedor: $respuestaVendedor[nombre]
+				VENDEDOR: $respuestaVendedor[nombre]
 
 				<br>
 
 			</div>
+			<br>
+			PRODUCTO  CANT. PRECIO IMPORTE
+			________________________________
 
 		</td>
 
-	</tr>
 
+	</tr>
+	
+	
+	
 
 </table>
 
@@ -127,9 +129,9 @@ $bloque2 = <<<EOF
 	</tr>
 
 	<tr>
-	
-		<td style="width:160px; text-align:right">
-		$ $valorUnitario Und * $item[cantidad]  = $ $precioTotal
+		
+		<td style="width:170px; text-align:right">
+		    $item[cantidad]  &nbsp; &nbsp; $ $valorUnitario  &nbsp; &nbsp;  $ $precioTotal
 		<br>
 		</td>
 
@@ -152,7 +154,7 @@ $bloque3 = <<<EOF
 	<tr>
 	
 		<td style="width:160px;">
-			 --------------------------
+			 _________________________
 		</td>
 
 	</tr>
@@ -174,9 +176,12 @@ $bloque3 = <<<EOF
 		<td style="width:160px;">
 			<br>
 			<br>
-			¡Muchas gracias por su compra!
+			¡GRACIAS POR SU COMPRA!
+			<br><br>
+			¡FAVOR DE REVISAR SU MERCANCIA YA QUE <br> 
+			NO SE HACEN CAMBIOS NI DEVOLUCIONES!
 		</td>
-
+		<br> <br>
 	</tr>
 
 </table>

@@ -61,22 +61,15 @@ AGREGANDO PRODUCTOS A LA VENTA DESDE LA TABLA
 
 $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
+	var idProducto = $(this).attr("idProducto");
+
+	//Creamos el id del select
+	var idSelect ="#"+ idProducto + " option:selected";
+
+	//Selecionamos el value del select del producto
+	var tipoPrecio = $(idSelect).val();
+
 	
-	//OBTENER DATOS DEL CLIENTE
-
-	var idCliente = $("#seleccionarCliente option:selected").val();
-
-	if(idCliente == "0"){
-		swal({
-			      title: "Selecciona el cliente, antes de agregar productos.",
-			      type: "error",
-			      confirmButtonText: "¡Cerrar!"
-			    });	
-
-	} else { // Ya se ha seleccionado el cliente
-
-		var idProducto = $(this).attr("idProducto");
-
 	$(this).removeClass("btn-primary agregarProducto");
 
 	$(this).addClass("btn-default");
@@ -85,23 +78,6 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 	var datos = new FormData();
     datos.append("idProducto", idProducto);
 
-
-
-	var datosCliente = new FormData();
-    datosCliente.append("idCliente", idCliente);
-    $.ajax({
-
-     	url:"ajax/clientes.ajax.php",
-      	method: "POST",
-      	data: datosCliente,
-      	cache: false,
-      	contentType: false,
-      	processData: false,
-      	dataType:"json",
-      	success:function(respuesta){
-
-      	    var tipoCliente = respuesta["tipoCliente"];
-          	
       	     $.ajax({
 
      	url:"ajax/productos.ajax.php",
@@ -115,13 +91,24 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
       	    var descripcion = respuesta["descripcion"];
           	var stock = respuesta["stock"];
-          	var precio = 0;
-          	if(tipoCliente == true){
-          		 precio = respuesta["precio_especial"];
-          	} else {
-          		precio = respuesta["precio_venta"];
-          	}
+            var precio = 0;
+
+          	//Seleciconamos el tipo de Precio segun el select
           
+          if(tipoPrecio == "0"){
+          		 precio = respuesta["precio_venta"];
+          	} 
+          	else  if(tipoPrecio == "1") {
+          		precio = respuesta["precio_especial"];
+          	}
+          	else  if(tipoPrecio == "2") {
+          		precio = respuesta["precio_bulto"];
+          	}
+          	else  if(tipoPrecio == "3") {
+          		precio = respuesta["precio_credito"];
+          	} else{
+          		 precio = respuesta["precio_venta"];
+          	}
 
           	/*=============================================
           	EVITAR AGREGAR PRODUTO CUANDO EL STOCK ESTÁ EN CERO
@@ -206,13 +193,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
      })
 
-      	}
-
-     })
-}
-
-    
-
+     
 });
 
 /*=============================================
@@ -229,6 +210,8 @@ $(".tablaVentas").on("draw.dt", function(){
 
 			$("button.recuperarBoton[idProducto='"+listaIdProductos[i]["idProducto"]+"']").removeClass('btn-default');
 			$("button.recuperarBoton[idProducto='"+listaIdProductos[i]["idProducto"]+"']").addClass('btn-primary agregarProducto');
+
+
 
 		}
 
@@ -275,12 +258,16 @@ $(".formularioVenta").on("click", "button.quitarProducto", function(){
 
 	$("button.recuperarBoton[idProducto='"+idProducto+"']").addClass('btn-primary agregarProducto');
 
+	$("#"+idProducto+" option[value=0]").attr("selected",true);
+
 	if($(".nuevoProducto").children().length == 0){
 
 		//$("#nuevoImpuestoVenta").val(0);
 		$("#nuevoTotalVenta").val(0);
 		$("#totalVenta").val(0);
 		$("#nuevoTotalVenta").attr("total",0);
+		$("#nuevoValorEfectivo").val(0);
+		$("#nuevoCambioEfectivo").val(0);
 
 	}else{
 
@@ -537,8 +524,23 @@ function sumarTotalPrecios(){
 	$("#nuevoTotalVenta").val(sumaTotalPrecio);
 	$("#totalVenta").val(sumaTotalPrecio);
 	$("#nuevoTotalVenta").attr("total",sumaTotalPrecio);
+	actualizarCambio();
 
+}
 
+//FUNCIÓN ACTUALIZAR CAMBIO
+function actualizarCambio(){
+
+	var efectivo = $("#nuevoValorEfectivo").val();
+	if(efectivo != ""){
+		
+
+	var cambio =  Number(efectivo) - Number($('#nuevoTotalVenta').val());
+
+	var nuevoCambioEfectivo = $("#nuevoCambioEfectivo");
+
+	nuevoCambioEfectivo.val(cambio);
+	}
 }
 
 /*=============================================

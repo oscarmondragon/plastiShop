@@ -130,7 +130,7 @@ if($_SESSION["perfil"] == "Especial"){
                     
                     <select class="form-control" id="seleccionarCliente" name="seleccionarCliente" required>
 
-                    <option value="0">Seleccionar cliente</option>
+                    <option value="1">Seleccionar cliente</option>
 
                     <?php
 

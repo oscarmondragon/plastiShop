@@ -149,19 +149,6 @@ MODAL AGREGAR PRODUCTO
 
             </div>
 
-            <!-- ENTRADA PARA EL CÓDIGO -->
-            
-            <div class="form-group">
-              
-              <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-code"></i></span> 
-
-                <input type="text" class="form-control input-lg" id="nuevoCodigo" name="nuevoCodigo" placeholder="Ingresar código" required>
-
-              </div>
-
-            </div>
 
             <!-- ENTRADA PARA LA DESCRIPCIÓN -->
 
@@ -172,6 +159,20 @@ MODAL AGREGAR PRODUCTO
                 <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span> 
 
                 <input type="text" class="form-control input-lg" name="nuevaDescripcion" placeholder="Ingresar descripción" required>
+
+              </div>
+
+            </div>
+
+            <!-- ENTRADA PARA EL CÓDIGO -->
+            
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-code"></i></span> 
+
+                <input type="text" class="form-control input-lg" id="nuevoCodigo" name="nuevoCodigo" placeholder="Ingresar código" required>
 
               </div>
 
@@ -381,20 +382,6 @@ MODAL EDITAR PRODUCTO
 
             </div>
 
-            <!-- ENTRADA PARA EL CÓDIGO -->
-            
-            <div class="form-group">
-              
-              <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-code"></i></span> 
-
-                <input type="text" class="form-control input-lg" id="editarCodigo" name="editarCodigo" readonly  required>
-
-              </div>
-
-            </div>
-
             <!-- ENTRADA PARA LA DESCRIPCIÓN -->
 
              <div class="form-group">
@@ -404,6 +391,19 @@ MODAL EDITAR PRODUCTO
                 <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span> 
 
                 <input type="text" class="form-control input-lg" id="editarDescripcion" name="editarDescripcion" placeholder="Ingresar descripción"  required>
+
+              </div>
+
+            </div>
+            <!-- ENTRADA PARA EL CÓDIGO -->
+            
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-code"></i></span> 
+
+                <input type="text" class="form-control input-lg" id="editarCodigo" name="editarCodigo" readonly  required>
 
               </div>
 

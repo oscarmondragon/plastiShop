@@ -144,22 +144,21 @@ class ControladorVentas{
 
 				$printer -> setJustification(Printer::JUSTIFY_CENTER);
 
-				$printer -> text(date("Y-m-d H:i:s")."\n");//Fecha de la factura
+				/*INTENTAMOS IMPRIMIR EL LOGO*/
+				try{
+					$logo = EscposImage::load("vistas/img/plantilla/logo-negro.png", false);
 
+				$printer ->bitImage($logo);
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/
+			} catch(Exception $e){
+				//No hacemos nada si hay error
+			}
+				$printer -> text("CALLE 02 DE NOVIEMBRE S/N,"."\n"."SANTIAGO ACUT. ATLACOMULCO MEX."."\n");//Dirección de la empresa
+				$printer -> text("TEL: 7121643784"."          ".date("Y-m-d")."\n");//Teléfono de la empresa y fecha
 
-				$printer -> text("PLASTI-SHOP"."\n");//Nombre de la empresa
-				$printer -> text("JARCIERIA-PLASTICO-COCINA"."\n");//frase
+				$printer -> text("C: ".$_POST["nuevaVenta"]."                  ".date("H:i:s")."\n");//Número de nota
 
-				$printer -> text("Dirección: Calle 02 de Noviembre,"."\n"."Santiago Acutzilapan"."\n");//Dirección de la empresa
-
-				$printer -> text("Teléfono: 712 160 53 75"."\n");//Teléfono de la empresa
-
-				$printer -> text("COMPRA N.".$_POST["nuevaVenta"]."\n");//Número de nota
-
-				$printer -> feed(1); //Alimentamos el papel 1 vez*/
-
-				$printer -> text("Cliente: ".$traerCliente["nombre"]."\n");//Nombre del cliente
+				$printer -> text("CLIENTE: ".$traerCliente["nombre"]."\n");//Nombre del cliente
 
 				$tablaVendedor = "usuarios";
 				$item = "id";
@@ -167,11 +166,18 @@ class ControladorVentas{
 
 				$traerVendedor = ModeloUsuarios::mdlMostrarUsuarios($tablaVendedor, $item, $valor);
 
-				$printer -> text("Vendedor: ".$traerVendedor["nombre"]."\n");//Nombre del vendedor
+				$printer -> text("VENDEDOR: ".$traerVendedor["nombre"]."\n");//Nombre del vendedor
 
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/
 
-				foreach ($listaProductos as $key => $value) {
+				//ENCABEZADO DE LA TABLA
+				$printer->setJustification(Printer::JUSTIFY_RIGHT);
+				$printer -> text("PRODUCTO      "."CANTIDAD     "."PRECIO     "."IMPORTE"."\n");//Nombre del vendedor
+				$printer -> text("________________________________________________"."\n");//linea
+
+
+
+				foreach ($listaProductos as $key => $value) { 
 
 					$printer->setJustification(Printer::JUSTIFY_LEFT);
 
@@ -179,31 +185,36 @@ class ControladorVentas{
 
 					$printer->setJustification(Printer::JUSTIFY_RIGHT);
 
-					$printer->text("$ ".number_format($value["precio"],2)." Und x ".$value["cantidad"]." = $ ".number_format($value["total"],2)."\n");
+					$printer->text($value["cantidad"]."    $ ".number_format($value["precio"],2)."    $ ".number_format($value["total"],2)."\n");
 
 				}
 
-				$printer -> feed(1); //Alimentamos el papel 1 vez*/			
 				
 				//$printer->text("NETO: $ ".number_format($_POST["nuevoPrecioNeto"],2)."\n"); //ahora va el neto
 
 				//$printer->text("IMPUESTO: $ ".number_format($_POST["nuevoPrecioImpuesto"],2)."\n"); //ahora va el impuesto
 
-				$printer->text("--------\n");
+				$printer -> text("_______________"."\n");//linea
+				
 				
 				$printer->text("TOTAL: $ ".number_format($_POST["totalVenta"],2)."\n"); //ahora va el total
-				$printer->text("--------\n");
+			
 
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/	
-				$printer->text("Efectivo: $ ".number_format($_POST["nuevoValorEfectivo"],2)."\n"); //Efectivo con el que pagó
-				$printer->text("Cambio: $ ".number_format($_POST["nuevoCambioEfectivo"],2)."\n"); //Efectivo con el que pagó
+				$printer->text("EFECTIVO: $ ".number_format($_POST["nuevoValorEfectivo"],2)."\n"); //Efectivo con el que pagó
+				$printer->text("CAMBIO: $ ".number_format($_POST["nuevoCambioEfectivo"],2)."\n"); //Efectivo con el que pagó
 
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/	
 
+				$printer -> setJustification(Printer::JUSTIFY_CENTER);
 
-				$printer->text("¡Muchas gracias por su compra!"); //Podemos poner también un pie de página
+				$printer->text("¡GRACIAS POR SU COMPRA!"."\n"); //Podemos poner también un pie de página
 
-				$printer -> feed(3); //Alimentamos el papel 3 veces*/
+				$printer -> feed(1); //Alimentamos el papel 1 vez*/	
+				$printer->text("¡FAVOR DE REVISAR SU MERCANCIA YA QUE"."\n"."NO SE HACEN CAMBIOS NI DEVOLUCIONES!"); //Podemos poner también un pie de página
+
+
+				$printer -> feed(2); //Alimentamos el papel 3 veces*/
 
 				$printer -> cut(); //Cortamos el papel, si la impresora tiene la opción
 

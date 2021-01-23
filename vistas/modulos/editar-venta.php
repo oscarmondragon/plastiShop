@@ -335,6 +335,7 @@
                   <th>Imagen</th>
                   <th>Código</th>
                   <th>Descripcion</th>
+                  <th>Precio mayoreo</th>
                   <th>Stock</th>
                   <th>Acciones</th>
                 </tr>
@@ -410,7 +411,7 @@ MODAL AGREGAR CLIENTE
               
                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
 
-                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar documento" required>
+                <input type="text" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar documento" required>
 
               </div>
 
@@ -458,19 +459,6 @@ MODAL AGREGAR CLIENTE
 
             </div>
 
-             <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
-            
-            <div class="form-group">
-              
-              <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
-
-                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
-
-              </div>
-
-            </div>
   
           </div>
 
