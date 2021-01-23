@@ -244,6 +244,8 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
            $("#editarCodigo").val(respuesta["codigo"]);
 
            $("#editarDescripcion").val(respuesta["descripcion"]);
+           $("#editarPiezas").val(respuesta["piezas"]);
+
 
            $("#editarStock").val(respuesta["stock"]);
 
@@ -252,6 +254,11 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
            $("#editarPrecioVenta").val(respuesta["precio_venta"]);
 
             $("#editarPrecioEspecial").val(respuesta["precio_especial"]);
+
+            $("#editarPrecioBulto").val(respuesta["precio_bulto"]);
+
+            $("#editarPrecioCredito").val(respuesta["precio_credito"]);
+
 
            if(respuesta["imagen"] != ""){
 

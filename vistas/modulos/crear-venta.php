@@ -421,7 +421,7 @@ MODAL AGREGAR CLIENTE
               
                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
 
-                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar identificador" required>
+                <input type="text" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar identificador" required>
 
               </div>
 
@@ -468,24 +468,7 @@ MODAL AGREGAR CLIENTE
               </div>
 
             </div>
-             <!-- ENTRADA PARA TIPO DE CLIENTE-->
-            <div class="form-group">
-                  
-                  <div class="input-group">
-                    
-                    <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                    
-                    <select class="form-control" id="seleccionartipoCliente" name="seleccionartipoCliente" required>
-
-                    <option value="0">Mayoreo</option>
-                    <option value="1">Especial</option>
-
-                    </select>
-                    
-                  </div>
-                
-                </div>
-
+            
   
           </div>
 

@@ -60,11 +60,12 @@ if($_SESSION["perfil"] == "Vendedor"){
            <th>Código</th>
            <th>Descripción</th>
            <th>Categoría</th>
+           <th>Piezas x bulto</th>
            <th>Stock</th>
            <th>Precio de compra</th>
            <th>Precio Mayoreo</th>
            <th>Precio Especial</th>
-           <th>Agregado</th>
+           <th>Precio x bulto</th>
            <th>Acciones</th>
            
          </tr> 
@@ -175,6 +176,19 @@ MODAL AGREGAR PRODUCTO
               </div>
 
             </div>
+            <!-- ENTRADA PARA PIEZAS X BULTO-->
+            
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-code"></i></span> 
+
+                <input type="number" class="form-control input-lg" id="nuevoPiezas" name="nuevoPiezas" placeholder="Ingresar piezas por bulto o caja" required>
+
+              </div>
+
+            </div>
 
              <!-- ENTRADA PARA STOCK -->
 
@@ -214,13 +228,14 @@ MODAL AGREGAR PRODUCTO
                   
                     <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
 
-                    <input type="number" class="form-control input-lg" id="nuevoPrecioVenta" name="nuevoPrecioVenta" step="any" min="0" placeholder="Precio de venta" required>
+                    <input type="number" class="form-control input-lg" id="nuevoPrecioVenta" name="nuevoPrecioVenta" step="any" min="0" placeholder="Precio de mayoreo" required>
 
                   </div>
                 </div>
                 </div>
                   <br>
                   <!-- ENTRADA PARA PRECIO ESPECIAL -->
+                   <div class="form-group row">
 
                 <div class="col-xs-6">
                 
@@ -231,14 +246,44 @@ MODAL AGREGAR PRODUCTO
                   <input type="number" class="form-control input-lg" id="nuevoPrecioEspecial" name="nuevoPrecioEspecial" step="any" min="0" placeholder="Precio especial" required>
 
                 </div>
-            
              
                 <br>
-
-
                 </div>
 
+       
+          <!-- ENTRADA PARA PRECIO BULTO -->
+            <div class="form-group row">
+              <div class="col-xs-6">
+                
+                  <div class="input-group">
+                  
+                    <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
+
+                    <input type="number" class="form-control input-lg" id="nuevoPrecioBulto" name="nuevoPrecioBulto" step="any" min="0" placeholder="Precio por bulto"  required>
+
+                  </div>
+                
+                  <br>
+
+                </div>
+            </div>
           </div>
+            <!-- ENTRADA PARA PRECIO CREDITO -->
+            <div class="form-group row">
+              <div class="col-xs-6">
+                
+                  <div class="input-group">
+                  
+                    <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
+
+                    <input type="number" class="form-control input-lg" id="nuevoPrecioCredito" name="nuevoPrecioCredito" step="any" min="0" placeholder="Precio a crédito"  required>
+
+                  </div>
+                
+                  <br>
+
+                </div>
+            </div>
 
             <!-- ENTRADA PARA SUBIR FOTO -->
 
@@ -256,7 +301,7 @@ MODAL AGREGAR PRODUCTO
 
           </div>
 
-       
+       </div>
 
         <!--=====================================
         PIE DEL MODAL
@@ -363,6 +408,19 @@ MODAL EDITAR PRODUCTO
               </div>
 
             </div>
+              <!-- ENTRADA PARA PIEZAS X BULTO-->
+            
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-code"></i></span> 
+
+                <input type="number" class="form-control input-lg" id="editarPiezas" name="editarPiezas" placeholder="Ingresar piezas por bulto o caja" required>
+
+              </div>
+
+            </div>
 
              <!-- ENTRADA PARA STOCK -->
 
@@ -420,6 +478,39 @@ MODAL EDITAR PRODUCTO
                     <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
 
                     <input type="number" class="form-control input-lg" id="editarPrecioEspecial" name="editarPrecioEspecial" step="any" min="0" placeholder="Precio especial"  required>
+
+                  </div>
+                
+                  <br>
+
+                </div>
+           
+            <!-- ENTRADA PARA PRECIO BULTO -->
+            <div class="form-group row">
+              <div class="col-xs-6">
+                
+                  <div class="input-group">
+                  
+                    <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
+
+                    <input type="number" class="form-control input-lg" id="editarPrecioBulto" name="editarPrecioBulto" step="any" min="0" placeholder="Precio por bulto"  required>
+
+                  </div>
+                
+                  <br>
+
+                </div>
+            </div>
+          </div>
+            <!-- ENTRADA PARA PRECIO CREDITO -->
+            <div class="form-group row">
+              <div class="col-xs-6">
+                
+                  <div class="input-group">
+                  
+                    <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
+
+                    <input type="number" class="form-control input-lg" id="editarPrecioCredito" name="editarPrecioCredito" step="any" min="0" placeholder="Precio a crédito"  required>
 
                   </div>
                 
