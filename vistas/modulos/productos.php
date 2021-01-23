@@ -66,6 +66,8 @@ if($_SESSION["perfil"] == "Vendedor"){
            <th>Precio Mayoreo</th>
            <th>Precio Especial</th>
            <th>Precio x bulto</th>
+           <th>Precio crédito</th>
+
            <th>Acciones</th>
            
          </tr> 
@@ -284,6 +286,9 @@ MODAL AGREGAR PRODUCTO
                   <br>
 
                 </div>
+            </div>
+            <div class="form-group row">
+              <span style="color: red">Nota: Si el producto no tiene alguno de los precios, coloca un 0.</span>
             </div>
 
             <!-- ENTRADA PARA SUBIR FOTO -->
@@ -518,6 +523,10 @@ MODAL EDITAR PRODUCTO
 
                 </div>
             </div>
+              <div class="form-group row">
+              <span style="color: red">Nota: Si el producto no tiene alguno de los precios, coloca un 0.</span>
+            </div>
+
 
             <!-- ENTRADA PARA SUBIR FOTO -->
 

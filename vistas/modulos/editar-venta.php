@@ -23,6 +23,43 @@
     <div class="row">
 
       <!--=====================================
+      LA TABLA DE PRODUCTOS
+      ======================================-->
+
+      <div class="col-lg-7 col-xs-12">
+        
+        <div class="box box-warning">
+
+          <div class="box-header with-border"></div>
+
+          <div class="box-body">
+            
+            <table class="table table-bordered table-striped dt-responsive tablaVentas">
+              
+               <thead>
+
+                 <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Imagen</th>
+                  <th>Código</th>
+                  <th>Descripcion</th>
+                  <th>Precio mayoreo</th>
+                  <th>Stock</th>
+                  <th>Acciones</th>
+                </tr>
+
+              </thead>
+
+            </table>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <!--=====================================
       EL FORMULARIO
       ======================================-->
       
@@ -197,7 +234,7 @@
                 BOTÓN PARA AGREGAR PRODUCTO
                 ======================================-->
 
-                <button type="button" class="btn btn-default hidden-lg btnAgregarProducto">Agregar producto</button>
+                
 
                 <hr>
 
@@ -314,42 +351,6 @@
             
       </div>
 
-      <!--=====================================
-      LA TABLA DE PRODUCTOS
-      ======================================-->
-
-      <div class="col-lg-7 hidden-md hidden-sm hidden-xs">
-        
-        <div class="box box-warning">
-
-          <div class="box-header with-border"></div>
-
-          <div class="box-body">
-            
-            <table class="table table-bordered table-striped dt-responsive tablaVentas">
-              
-               <thead>
-
-                 <tr>
-                  <th style="width: 10px">#</th>
-                  <th>Imagen</th>
-                  <th>Código</th>
-                  <th>Descripcion</th>
-                  <th>Precio mayoreo</th>
-                  <th>Stock</th>
-                  <th>Acciones</th>
-                </tr>
-
-              </thead>
-
-            </table>
-
-          </div>
-
-        </div>
-
-
-      </div>
 
     </div>
    
