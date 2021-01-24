@@ -27,13 +27,16 @@
     <div class="box">
 
       <div class="box-header with-border">
+        <?php
+        if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Administrador"){
   
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarProducto">
+        echo '<button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarProducto">
           
           Agregar producto
 
-        </button>
-
+        </button>';
+      }
+        ?>
       </div>
 
       <div class="box-body">
