@@ -74,14 +74,32 @@ class TablaProductos{
 
   				$botones =  "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fa fa-pencil'></i></button></div>"; 
 
-  			}else{
+  			}  else if (isset($_GET["perfilOculto"]) && $_GET["perfilOculto"] == "Vendedor"){
+  				$botones = "<div class='btn-group'> </div>";
+
+  			} else {
 
   				 $botones =  "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' codigo='".$productos[$i]["codigo"]."' imagen='".$productos[$i]["imagen"]."'><i class='fa fa-times'></i></button></div>"; 
 
   			}
 
-		 
-		  	$datosJson .='[
+  			if (isset($_GET["perfilOculto"]) && $_GET["perfilOculto"] == "Vendedor"){
+  					$datosJson .='[
+			      "'.($i+1).'",
+			      "'.$imagen.'",
+			      "'.$productos[$i]["codigo"].'",
+			      "'.$productos[$i]["descripcion"].'",
+			      "'.$categorias["categoria"].'",
+			      "'.$productos[$i]["piezas"].'",
+			      "'.$stock.'",
+			      "'.$productos[$i]["precio_venta"].'",
+			      "'.$productos[$i]["precio_especial"].'",
+			      "'.$productos[$i]["precio_bulto"].'",
+			      "'.$productos[$i]["precio_credito"].'"
+			    ],';
+
+  			} else {
+  					$datosJson .='[
 			      "'.($i+1).'",
 			      "'.$imagen.'",
 			      "'.$productos[$i]["codigo"].'",
@@ -96,6 +114,9 @@ class TablaProductos{
 			      "'.$productos[$i]["precio_credito"].'",
 			      "'.$botones.'"
 			    ],';
+  			}
+		 
+		  	
 
 		  }
 

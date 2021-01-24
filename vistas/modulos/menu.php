@@ -43,9 +43,13 @@
 
 				</a>
 
-			</li>
+			</li>';
 
-			<li>
+		}
+
+		 if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Especial"  || $_SESSION["perfil"] == "Vendedor"){
+
+		 	echo '<li>
 
 				<a href="productos">
 
@@ -56,7 +60,7 @@
 
 			</li>';
 
-		}
+		 }
 
 		if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Vendedor"){
 

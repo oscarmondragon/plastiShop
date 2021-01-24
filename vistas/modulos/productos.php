@@ -1,16 +1,5 @@
 <?php
 
-if($_SESSION["perfil"] == "Vendedor"){
-
-  echo '<script>
-
-    window.location = "inicio";
-
-  </script>';
-
-  return;
-
-}
 
 ?>
 <div class="content-wrapper">
@@ -62,13 +51,21 @@ if($_SESSION["perfil"] == "Vendedor"){
            <th>Categoría</th>
            <th>Piezas x bulto</th>
            <th>Stock</th>
-           <th>Precio de compra</th>
+           <?php
+           if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Administrador"){
+            echo '<th>Precio de compra</th>';
+           }
+           ?>
            <th>Precio Mayoreo</th>
            <th>Precio Especial</th>
            <th>Precio x bulto</th>
            <th>Precio crédito</th>
-
-           <th>Acciones</th>
+            <?php
+           if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Administrador"){
+            echo '<th>Acciones</th>';
+           }
+           ?>
+           
            
          </tr> 
 
