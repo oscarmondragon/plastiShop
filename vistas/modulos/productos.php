@@ -56,13 +56,13 @@
            <th>Stock</th>
            <?php
            if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Administrador"){
-            echo '<th>Precio de compra</th>';
+            echo '<th>Precio Compra</th>';
            }
            ?>
+           <th>Precio Menudeo</th>
            <th>Precio Mayoreo</th>
            <th>Precio Especial</th>
-           <th>Precio x bulto</th>
-           <th>Precio crédito</th>
+           <th>Precio Crédito</th>
             <?php
            if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Administrador"){
             echo '<th>Acciones</th>';
@@ -222,8 +222,29 @@ MODAL AGREGAR PRODUCTO
                   </div>
 
                 </div>
+                <!-- ENTRADA PARA PRECIO MENUDEO -->
+         
+              <div class="col-xs-6">
+                
+                  <div class="input-group">
+                  
+                    <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
 
-                <!-- ENTRADA PARA PRECIO MAYOREO -->
+                    <input type="number" class="form-control input-lg" id="nuevoPrecioMenudeo" name="nuevoPrecioMenudeo" step="any" min="0" placeholder="Precio menudeo"  required>
+
+                  </div>
+                
+                  <br>
+
+                </div>
+            
+
+                </div>
+                
+                
+                   <div class="form-group row">
+
+                    <!-- ENTRADA PARA PRECIO MAYOREO -->
 
                 <div class="col-xs-6">
                 
@@ -231,14 +252,11 @@ MODAL AGREGAR PRODUCTO
                   
                     <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
 
-                    <input type="number" class="form-control input-lg" id="nuevoPrecioVenta" name="nuevoPrecioVenta" step="any" min="0" placeholder="Precio de mayoreo" required>
+                    <input type="number" class="form-control input-lg" id="nuevoPrecioVenta" name="nuevoPrecioVenta" step="any" min="0" placeholder="Precio mayoreo" required>
 
                   </div>
                 </div>
-                </div>
-                  <br>
                   <!-- ENTRADA PARA PRECIO ESPECIAL -->
-                   <div class="form-group row">
 
                 <div class="col-xs-6">
                 
@@ -253,23 +271,6 @@ MODAL AGREGAR PRODUCTO
                 <br>
                 </div>
 
-       
-          <!-- ENTRADA PARA PRECIO BULTO -->
-            <div class="form-group row">
-              <div class="col-xs-6">
-                
-                  <div class="input-group">
-                  
-                    <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
-
-                    <input type="number" class="form-control input-lg" id="nuevoPrecioBulto" name="nuevoPrecioBulto" step="any" min="0" placeholder="Precio por bulto"  required>
-
-                  </div>
-                
-                  <br>
-
-                </div>
-            </div>
           </div>
             <!-- ENTRADA PARA PRECIO CREDITO -->
             <div class="form-group row">
@@ -456,16 +457,15 @@ MODAL EDITAR PRODUCTO
                   </div>
 
                 </div>
+                 <!-- ENTRADA PARA PRECIO MENUDEO -->
 
-                <!-- ENTRADA PARA PRECIO VENTA -->
-
-                <div class="col-xs-6">
+                  <div class="col-xs-6">
                 
                   <div class="input-group">
                   
                     <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
 
-                    <input type="number" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" step="any" min="0"  placeholder="Precio de venta" required>
+                    <input type="number" class="form-control input-lg" id="editarPrecioMenudeo" name="editarPrecioMenudeo" step="any" min="0" placeholder="Precio menudeo"  required>
 
                   </div>
                 
@@ -473,9 +473,26 @@ MODAL EDITAR PRODUCTO
 
                 </div>
 
+
             </div>
-            <!-- ENTRADA PARA PRECIO ESPECIAL -->
+           
             <div class="form-group row">
+                <!-- ENTRADA PARA PRECIO MAYOREO -->
+
+                <div class="col-xs-6">
+                
+                  <div class="input-group">
+                  
+                    <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
+
+                    <input type="number" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" step="any" min="0"  placeholder="Precio mayoreo" required>
+
+                  </div>
+                
+                  <br>
+
+                </div>
+                 <!-- ENTRADA PARA PRECIO ESPECIAL -->
               <div class="col-xs-6">
                 
                   <div class="input-group">
@@ -490,22 +507,6 @@ MODAL EDITAR PRODUCTO
 
                 </div>
            
-            <!-- ENTRADA PARA PRECIO BULTO -->
-            <div class="form-group row">
-              <div class="col-xs-6">
-                
-                  <div class="input-group">
-                  
-                    <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
-
-                    <input type="number" class="form-control input-lg" id="editarPrecioBulto" name="editarPrecioBulto" step="any" min="0" placeholder="Precio por bulto"  required>
-
-                  </div>
-                
-                  <br>
-
-                </div>
-            </div>
           </div>
             <!-- ENTRADA PARA PRECIO CREDITO -->
             <div class="form-group row">

@@ -250,12 +250,11 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
            $("#editarStock").val(respuesta["stock"]);
 
            $("#editarPrecioCompra").val(respuesta["precio_compra"]);
+            $("#editarPrecioMenudeo").val(respuesta["precio_menudeo"]);
 
            $("#editarPrecioVenta").val(respuesta["precio_venta"]);
 
             $("#editarPrecioEspecial").val(respuesta["precio_especial"]);
-
-            $("#editarPrecioBulto").val(respuesta["precio_bulto"]);
 
             $("#editarPrecioCredito").val(respuesta["precio_credito"]);
 

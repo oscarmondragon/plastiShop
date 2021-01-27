@@ -52,11 +52,11 @@ class TablaProductos{
  	 		STOCK
   			=============================================*/ 
 
-  			if($productos[$i]["stock"] <= 10){
+  			if($productos[$i]["stock"] <= 50){
 
   				$stock = "<button class='btn btn-danger'>".$productos[$i]["stock"]."</button>";
 
-  			}else if($productos[$i]["stock"] > 11 && $productos[$i]["stock"] <= 15){
+  			}else if($productos[$i]["stock"] > 51 && $productos[$i]["stock"] <= 100){
 
   				$stock = "<button class='btn btn-warning'>".$productos[$i]["stock"]."</button>";
 
@@ -92,9 +92,9 @@ class TablaProductos{
 			      "'.$categorias["categoria"].'",
 			      "'.$productos[$i]["piezas"].'",
 			      "'.$stock.'",
+			      "'.$productos[$i]["precio_menudeo"].'",
 			      "'.$productos[$i]["precio_venta"].'",
 			      "'.$productos[$i]["precio_especial"].'",
-			      "'.$productos[$i]["precio_bulto"].'",
 			      "'.$productos[$i]["precio_credito"].'"
 			    ],';
 
@@ -108,9 +108,9 @@ class TablaProductos{
 			      "'.$productos[$i]["piezas"].'",
 			      "'.$stock.'",
 			      "'.$productos[$i]["precio_compra"].'",
+			      "'.$productos[$i]["precio_menudeo"].'",
 			      "'.$productos[$i]["precio_venta"].'",
 			      "'.$productos[$i]["precio_especial"].'",
-			      "'.$productos[$i]["precio_bulto"].'",
 			      "'.$productos[$i]["precio_credito"].'",
 			      "'.$botones.'"
 			    ],';

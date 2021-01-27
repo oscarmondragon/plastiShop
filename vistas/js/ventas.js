@@ -17,12 +17,14 @@ CARGAR LA TABLA DINÁMICA DE VENTAS
 Ejecutar el metodo de pago
 ----------------------------------*/
 listarMetodos();
+//Traemos el perfil de usuario
 
+var perfilOculto = $("#perfilOculto").val();
 /*-------------------------------------
 Agregando idioma español a la tabla
 --------------*/
 $('.tablaVentas').DataTable( {
-    "ajax": "ajax/datatable-ventas.ajax.php",
+    "ajax": "ajax/datatable-ventas.ajax.php?perfilOculto="+perfilOculto,
     "deferRender": true,
 	"retrieve": true,
 	"processing": true,
@@ -94,20 +96,19 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
             var precio = 0;
 
           	//Seleciconamos el tipo de Precio segun el select
-          
-          if(tipoPrecio == "0"){
+          	if(tipoPrecio == "0") {
+          		precio = respuesta["precio_menudeo"];
+          	} else if(tipoPrecio == "1"){
           		 precio = respuesta["precio_venta"];
           	} 
-          	else  if(tipoPrecio == "1") {
-          		precio = respuesta["precio_especial"];
-          	}
           	else  if(tipoPrecio == "2") {
-          		precio = respuesta["precio_bulto"];
-          	}
-          	else  if(tipoPrecio == "3") {
+          		precio = respuesta["precio_especial"];
+          	} else  if(tipoPrecio == "3") {
           		precio = respuesta["precio_credito"];
-          	} else{
-          		 precio = respuesta["precio_venta"];
+          	} else if(tipoPrecio == "4"){
+          		 precio = respuesta["precio_compra"];
+          	} else {
+
           	}
 
           	/*=============================================
@@ -210,7 +211,7 @@ $(".tablaVentas").on("draw.dt", function(){
 
 			$("button.recuperarBoton[idProducto='"+listaIdProductos[i]["idProducto"]+"']").removeClass('btn-default');
 			$("button.recuperarBoton[idProducto='"+listaIdProductos[i]["idProducto"]+"']").addClass('btn-primary agregarProducto');
-
+			$("#"+listaIdProductos[i]["idProducto"]+" option[value=1]").attr("selected",true);
 
 
 		}
@@ -258,7 +259,7 @@ $(".formularioVenta").on("click", "button.quitarProducto", function(){
 
 	$("button.recuperarBoton[idProducto='"+idProducto+"']").addClass('btn-primary agregarProducto');
 
-	$("#"+idProducto+" option[value=0]").attr("selected",true);
+	$("#"+idProducto+" option[value=1]").attr("selected",true);
 
 	if($(".nuevoProducto").children().length == 0){
 
@@ -266,7 +267,7 @@ $(".formularioVenta").on("click", "button.quitarProducto", function(){
 		$("#nuevoTotalVenta").val(0);
 		$("#totalVenta").val(0);
 		$("#nuevoTotalVenta").attr("total",0);
-		$("#nuevoValorEfectivo").val(0);
+		$("#nuevoValorEfectivo").val("");
 		$("#nuevoCambioEfectivo").val(0);
 
 	}else{
@@ -532,15 +533,33 @@ function sumarTotalPrecios(){
 function actualizarCambio(){
 
 	var efectivo = $("#nuevoValorEfectivo").val();
-	if(efectivo != ""){
-		
+	var total = $('#nuevoTotalVenta').val();
+	
 
-	var cambio =  Number(efectivo) - Number($('#nuevoTotalVenta').val());
+	if(efectivo != ""){
+
+		var cambio =  Number(efectivo) - Number(total);
+		
+	 if(cambio < 0){
+		swal({
+	      title: "El total de la compra es mayor al efectivo",
+	      text: "Ingrese nuevamente el efectivo.",
+	      type: "error",
+	      confirmButtonText: "¡Cerrar!"
+	    });
+		 var efectivo = $("#nuevoValorEfectivo");
+		 efectivo.val("");
+
+		 console.log(total + "  " + cambio + " " + efectivo);
+	    return;
+	} else {
 
 	var nuevoCambioEfectivo = $("#nuevoCambioEfectivo");
 
 	nuevoCambioEfectivo.val(cambio);
 	}
+	
+}
 }
 
 /*=============================================
@@ -665,13 +684,32 @@ CAMBIO EN EFECTIVO
 $(".formularioVenta").on("change", "input#nuevoValorEfectivo", function(){
 
 	var efectivo = $(this).val();
+	var total = $('#nuevoTotalVenta').val();
+	if(efectivo != ""){
 
-	var cambio =  Number(efectivo) - Number($('#nuevoTotalVenta').val());
+
+	var cambio =  Number(efectivo) - Number(total);
+
+	if(Number(total) == 0){
+
+	} else if(cambio < 0 ){
+		swal({
+	      title: "El total de la compra es mayor al efectivo",
+	      text: "Ingrese nuevamente el efectivo.",
+	      type: "error",
+	      confirmButtonText: "¡Cerrar!"
+	    });
+		 var efectivo = $("#nuevoValorEfectivo");
+		 efectivo.val("");
+	    return;
+	} else {
 
 	var nuevoCambioEfectivo = $(this).parent().parent().parent().children('#capturarCambioEfectivo').children().children('#nuevoCambioEfectivo');
 
 	nuevoCambioEfectivo.val(cambio);
+	}
 
+}
 })
 
 /*=============================================

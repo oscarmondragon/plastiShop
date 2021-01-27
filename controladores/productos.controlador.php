@@ -29,7 +29,7 @@ class ControladorProductos{
 			   preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioCompra"]) &&
 			   preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioVenta"]) &&
 			   preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioEspecial"])&&
-			   preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioBulto"])&&
+			   preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioMenudeo"])&&
 			   preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioCredito"])&&
 			   preg_match('/^[0-9.]+$/', $_POST["nuevoPiezas"])){
 
@@ -108,9 +108,9 @@ class ControladorProductos{
 							   "piezas" => $_POST["nuevoPiezas"],
 							   "stock" => $_POST["nuevoStock"],
 							   "precio_compra" => $_POST["nuevoPrecioCompra"],
+							    "precio_menudeo" => $_POST["nuevoPrecioMenudeo"],
 							   "precio_venta" => $_POST["nuevoPrecioVenta"],
 							   "precio_especial" => $_POST["nuevoPrecioEspecial"],
-							   "precio_bulto" => $_POST["nuevoPrecioBulto"],
 							   "precio_credito" => $_POST["nuevoPrecioCredito"],
 
 							   "imagen" => $ruta);
@@ -175,7 +175,7 @@ class ControladorProductos{
 			   preg_match('/^[0-9.]+$/', $_POST["editarPrecioCompra"]) &&
 			   preg_match('/^[0-9.]+$/', $_POST["editarPrecioVenta"]) &&
 			   preg_match('/^[0-9.]+$/', $_POST["editarPrecioEspecial"])&&
-			   preg_match('/^[0-9.]+$/', $_POST["editarPrecioBulto"])&&
+			   preg_match('/^[0-9.]+$/', $_POST["editarPrecioMenudeo"])&&
 			   preg_match('/^[0-9.]+$/', $_POST["editarPrecioCredito"])&&
 			   preg_match('/^[0-9.]+$/', $_POST["editarPiezas"])){
 
@@ -266,9 +266,9 @@ class ControladorProductos{
 							   "piezas" => $_POST["editarPiezas"],
 							   "stock" => $_POST["editarStock"],
 							   "precio_compra" => $_POST["editarPrecioCompra"],
+							   "precio_menudeo" => $_POST["editarPrecioMenudeo"],
 							   "precio_venta" => $_POST["editarPrecioVenta"],
 							   "precio_especial" => $_POST["editarPrecioEspecial"],
-							   "precio_bulto" => $_POST["editarPrecioBulto"],
 							   "precio_credito" => $_POST["editarPrecioCredito"],
 
 							   "imagen" => $ruta);

@@ -42,8 +42,8 @@
                   <th style="width: 10px">#</th>
                   <th>Imagen</th>
                   <th>Código</th>
-                  <th>Descripcion</th>
-                  <th>Precio mayoreo</th>
+                  <th>Descripción</th>
+                  <th>Precio menudeo</th>
                   <th>Stock</th>
                   <th>Acciones</th>
                 </tr>

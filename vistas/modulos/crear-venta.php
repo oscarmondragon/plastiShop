@@ -57,8 +57,8 @@ if($_SESSION["perfil"] == "Especial"){
                   <th style="width: 10px">#</th>
                   <th>Imagen</th>
                   <th>Código</th>
-                  <th>Descripcion</th>
-                  <th>Precio mayoreo</th>
+                  <th>Descripción</th>
+                  <th>Precio Mayoreo</th>
                   <th>Stock</th>
                   <th>Acciones</th>
                 </tr>
@@ -66,7 +66,7 @@ if($_SESSION["perfil"] == "Especial"){
               </thead>
 
             </table>
-
+             <input type="hidden" value="<?php echo $_SESSION['perfil']; ?>" id="perfilOculto">
           </div>
 
         </div>
@@ -312,7 +312,7 @@ if($_SESSION["perfil"] == "Especial"){
 
                         <span class="input-group-addon"><i class="ion ion-social-usd"></i></span> 
 
-                        <input type="text" class="form-control" id="nuevoValorEfectivo" name="nuevoValorEfectivo" placeholder="000000" required>
+                        <input type="number" class="form-control" id="nuevoValorEfectivo" name="nuevoValorEfectivo" placeholder="000000" required>
 
                       </div>
 
@@ -324,7 +324,7 @@ if($_SESSION["perfil"] == "Especial"){
 
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
 
-                      <input type="text" class="form-control" id="nuevoCambioEfectivo" name="nuevoCambioEfectivo" placeholder="000000" readonly required>
+                      <input type="text" class="form-control" id="nuevoCambioEfectivo" name="nuevoCambioEfectivo" placeholder="000000" disabled="true" required>
 
                     </div>
 

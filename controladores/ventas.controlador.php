@@ -171,8 +171,8 @@ class ControladorVentas{
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/
 
 				//ENCABEZADO DE LA TABLA
-				$printer->setJustification(Printer::JUSTIFY_RIGHT);
-				$printer -> text("PRODUCTO      "."CANTIDAD     "."PRECIO     "."IMPORTE"."\n");//Nombre del vendedor
+				$printer->setJustification(Printer::JUSTIFY_LEFT);
+				$printer -> text("PRODUCTO  "."  CANTIDAD   "."PRECIO      "."IMPORTE"."\n");//Nombre del vendedor
 				$printer -> text("________________________________________________"."\n");//linea
 
 
@@ -183,9 +183,14 @@ class ControladorVentas{
 
 					$printer->text($value["descripcion"]."\n");//Nombre del producto
 
-					$printer->setJustification(Printer::JUSTIFY_RIGHT);
+					$printer->setJustification(Printer::JUSTIFY_LEFT);
 
-					$printer->text($value["cantidad"]."    $ ".number_format($value["precio"],2)."    $ ".number_format($value["total"],2)."\n");
+					$cantidad = $value["cantidad"];
+
+					$precio = number_format($value["precio"],2);
+					$total = number_format($value["total"],2) ;
+
+					$printer->text("            ".str_pad($cantidad, 10)." $ ".str_pad($precio,9)." $ ".$total."\n");
 
 				}
 
@@ -193,6 +198,7 @@ class ControladorVentas{
 				//$printer->text("NETO: $ ".number_format($_POST["nuevoPrecioNeto"],2)."\n"); //ahora va el neto
 
 				//$printer->text("IMPUESTO: $ ".number_format($_POST["nuevoPrecioImpuesto"],2)."\n"); //ahora va el impuesto
+				$printer->setJustification(Printer::JUSTIFY_RIGHT);
 
 				$printer -> text("_______________"."\n");//linea
 				
