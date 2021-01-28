@@ -41,7 +41,7 @@ if($_SESSION["perfil"] == "Especial"){
       LA TABLA DE PRODUCTOS
       ======================================-->
 
-      <div class="col-lg-7 col-xs-12">
+      <div class="col-xs-12 col-sm-12  col-lg-7 ">
         
         <div class="box box-warning">
 
@@ -78,7 +78,7 @@ if($_SESSION["perfil"] == "Especial"){
       EL FORMULARIO
       ======================================-->
       
-      <div class="col-lg-5 col-xs-12">
+      <div class=" col-xs-12 col-sm-12 col-lg-5">
         
         <div class="box box-success">
           
