@@ -55,7 +55,7 @@ class ControladorVentas{
 				return;
 			}
 
-
+			
 			$listaProductos = json_decode($_POST["listaProductos"], true);
 
 			$totalProductosComprados = array();
@@ -107,6 +107,32 @@ class ControladorVentas{
 
 			$fechaCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1b, $valor1b, $valor);
 
+			/*VERIFICAMOS EL ULTIMO VALOR DE CODIGO VENTA*/
+					$nuevaVenta = $_POST["nuevaVenta"];
+			  		$itemVenta = null;
+                    $valorVenta = null;
+
+                    $ventasHechas = ControladorVentas::ctrMostrarVentas($itemVenta, $valorVenta);
+
+
+
+                    if(!$ventasHechas){
+
+                     $nuevaVenta = 10001;
+                  
+
+                    }else{
+
+                      foreach ($ventasHechas as $key => $value) {
+                        
+                        
+                      
+                      }
+
+                      $nuevaVenta = $value["codigo"] + 1;
+                  }
+
+
 			/*=============================================
 			GUARDAR LA COMPRA
 			=============================================*/	
@@ -115,26 +141,18 @@ class ControladorVentas{
 
 			$datos = array("id_vendedor"=>$_POST["idVendedor"],
 						   "id_cliente"=>$_POST["seleccionarCliente"],
-						   "codigo"=>$_POST["nuevaVenta"],
+						   "codigo"=>$nuevaVenta,
 						   "productos"=>$_POST["listaProductos"],
 						   "total"=>$_POST["totalVenta"],
 						   "metodo_pago"=>$_POST["listaMetodoPago"]);
 
 			$respuesta = ModeloVentas::mdlIngresarVenta($tabla, $datos);
 
+		
 			if($respuesta == "ok"){
 
-				// $impresora = "epson20";
-
-				// $conector = new WindowsPrintConnector($impresora);
-
-				// $imprimir = new Printer($conector);
-
-				// $imprimir -> text("Hola Mundo"."\n");
-
-				// $imprimir -> cut();
-
-				// $imprimir -> close();
+				//Validamos si se quiere imprimir ticket
+				if(isset($_POST["ticket"])){
 
 				$impresora = "EPSON_TM-T20II";
 
@@ -156,7 +174,7 @@ class ControladorVentas{
 				$printer -> text("CALLE 02 DE NOVIEMBRE S/N,"."\n"."SANTIAGO ACUT. ATLACOMULCO MEX."."\n");//Dirección de la empresa
 				$printer -> text("TEL: 7121643784"."          ".date("Y-m-d")."\n");//Teléfono de la empresa y fecha
 
-				$printer -> text("C: ".$_POST["nuevaVenta"]."                  ".date("H:i:s")."\n");//Número de nota
+				$printer -> text("C: ".$nuevaVenta."                  ".date("H:i:s")."\n");//Número de nota
 
 				$printer -> text("CLIENTE: ".$traerCliente["nombre"]."\n");//Nombre del cliente
 
@@ -227,8 +245,9 @@ class ControladorVentas{
 				$printer -> pulse(); //Por medio de la impresora mandamos un pulso, es útil cuando hay cajón moneder
 
 				$printer -> close();
+		
+			} 
 
-	
 				echo'<script>
 
 				localStorage.removeItem("rango");
@@ -247,7 +266,7 @@ class ControladorVentas{
 							})
 
 				</script>';
-
+			
 			}
 
 		}
@@ -385,7 +404,7 @@ class ControladorVentas{
 
 				$fechaCliente_2 = ModeloClientes::mdlActualizarCliente($tablaClientes_2, $item1b_2, $valor1b_2, $valor_2);
 
-			}
+			}		
 
 			/*=============================================
 			GUARDAR CAMBIOS DE LA COMPRA
@@ -402,6 +421,109 @@ class ControladorVentas{
 			$respuesta = ModeloVentas::mdlEditarVenta($tabla, $datos);
 
 			if($respuesta == "ok"){
+
+						//Validamos si se quiere imprimir ticket
+				if(isset($_POST["ticketEditar"])){
+
+					$impresora = "EPSON_TM-T20II";
+	
+					$conector = new WindowsPrintConnector($impresora);
+	
+					$printer = new Printer($conector);
+	
+					$printer -> setJustification(Printer::JUSTIFY_CENTER);
+	
+					/*INTENTAMOS IMPRIMIR EL LOGO*/
+					try{
+						$logo = EscposImage::load("vistas/img/plantilla/logo-negro.png", false);
+	
+					$printer ->bitImage($logo);
+					$printer -> feed(1); //Alimentamos el papel 1 vez*/
+				} catch(Exception $e){
+					//No hacemos nada si hay error
+				}
+					$printer -> text("CALLE 02 DE NOVIEMBRE S/N,"."\n"."SANTIAGO ACUT. ATLACOMULCO MEX."."\n");//Dirección de la empresa
+					$printer -> text("TEL: 7121643784"."          ".date("Y-m-d")."\n");//Teléfono de la empresa y fecha
+	
+					$printer -> text("C: ".$_POST["editarVenta"]."                  ".date("H:i:s")."\n");//Número de nota
+					$tablaClientes = "clientes";
+
+					$itemCliente = "id";
+					$valorCliente = $_POST["seleccionarCliente"];
+					$traerCliente = ModeloClientes::mdlMostrarClientes($tablaClientes, $itemCliente, $valorCliente);
+	
+					$printer -> text("CLIENTE: ".$traerCliente["nombre"]."\n");//Nombre del cliente
+	
+					$tablaVendedor = "usuarios";
+					$item = "id";
+					$valor = $_POST["idVendedor"];
+	
+					$traerVendedor = ModeloUsuarios::mdlMostrarUsuarios($tablaVendedor, $item, $valor);
+	
+					$printer -> text("VENDEDOR: ".$traerVendedor["nombre"]."\n");//Nombre del vendedor
+	
+					$printer -> feed(1); //Alimentamos el papel 1 vez*/
+	
+					//ENCABEZADO DE LA TABLA
+					$printer->setJustification(Printer::JUSTIFY_LEFT);
+					$printer -> text("PRODUCTO  "."  CANTIDAD   "."PRECIO      "."IMPORTE"."\n");//Nombre del vendedor
+					$printer -> text("________________________________________________"."\n");//linea
+	
+					$listaProductos_imprimir = json_decode($listaProductos, true); 
+
+					foreach ($listaProductos_imprimir  as $key => $value) { 
+	
+						$printer->setJustification(Printer::JUSTIFY_LEFT);
+	
+						$printer->text($value["descripcion"]."\n");//Nombre del producto
+	
+						$printer->setJustification(Printer::JUSTIFY_LEFT);
+	
+						$cantidad = $value["cantidad"];
+	
+						$precio = number_format($value["precio"],2);
+						$total = number_format($value["total"],2) ;
+	
+						$printer->text("            ".str_pad($cantidad, 10)." $ ".str_pad($precio,9)." $ ".$total."\n");
+	
+					}
+	
+					
+					//$printer->text("NETO: $ ".number_format($_POST["nuevoPrecioNeto"],2)."\n"); //ahora va el neto
+	
+					//$printer->text("IMPUESTO: $ ".number_format($_POST["nuevoPrecioImpuesto"],2)."\n"); //ahora va el impuesto
+					$printer->setJustification(Printer::JUSTIFY_RIGHT);
+	
+					$printer -> text("_______________"."\n");//linea
+					
+					
+					$printer->text("TOTAL: $ ".number_format($_POST["totalVenta"],2)."\n"); //ahora va el total
+				
+	
+					$printer -> feed(1); //Alimentamos el papel 1 vez*/	
+					$printer->text("EFECTIVO: $ ".number_format($_POST["nuevoValorEfectivo"],2)."\n"); //Efectivo con el que pagó
+					$printer->text("CAMBIO: $ ".number_format($_POST["nuevoCambioEfectivo"],2)."\n"); //Efectivo con el que pagó
+	
+					$printer -> feed(1); //Alimentamos el papel 1 vez*/	
+	
+					$printer -> setJustification(Printer::JUSTIFY_CENTER);
+	
+					$printer->text("¡GRACIAS POR SU COMPRA!"."\n"); //Podemos poner también un pie de página
+	
+					$printer -> feed(1); //Alimentamos el papel 1 vez*/	
+					$printer->text("¡FAVOR DE REVISAR SU MERCANCIA YA QUE"."\n"."NO SE HACEN CAMBIOS NI DEVOLUCIONES!"); //Podemos poner también un pie de página
+	
+	
+					$printer -> feed(2); //Alimentamos el papel 3 veces*/
+	
+					$printer -> cut(); //Cortamos el papel, si la impresora tiene la opción
+	
+					$printer -> pulse(); //Por medio de la impresora mandamos un pulso, es útil cuando hay cajón moneder
+	
+					$printer -> close();
+					
+			
+				} 
 
 				echo'<script>
 
@@ -420,7 +542,7 @@ class ControladorVentas{
 								}
 							})
 
-				</script>';
+				</script>';		
 
 			}
 
@@ -686,7 +808,7 @@ class ControladorVentas{
 	SUMA TOTAL VENTAS
 	=============================================*/
 
-	public function ctrSumaTotalVentas(){
+	 static public function ctrSumaTotalVentas(){
 
 		$tabla = "ventas";
 

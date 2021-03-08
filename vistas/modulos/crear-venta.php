@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 if($_SESSION["perfil"] == "Especial"){
 
@@ -324,7 +324,7 @@ if($_SESSION["perfil"] == "Especial"){
 
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
 
-                      <input type="text" class="form-control" id="nuevoCambioEfectivo" name="nuevoCambioEfectivo" placeholder="000000" disabled="true" required>
+                      <input type="number" class="form-control" id="nuevoCambioEfectivo" name="nuevoCambioEfectivo" placeholder="000000" readonly required>
 
                     </div>
 
@@ -343,6 +343,7 @@ if($_SESSION["perfil"] == "Especial"){
 
           <div class="box-footer">
 
+          <label><input type="checkbox" id="ticket"  name="ticket" value="1" checked> Ticket</label>
             <button type="submit" class="btn btn-primary pull-right">Guardar venta</button>
 
           </div>

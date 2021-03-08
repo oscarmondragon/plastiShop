@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+﻿<div class="content-wrapper">
 
   <section class="content-header">
     
@@ -63,7 +63,7 @@
       EL FORMULARIO
       ======================================-->
       
-      <div class="col-xs-12 col-sm-12  col-lg-7">
+      <div class="col-xs-12 col-sm-12  col-lg-5">
         
         <div class="box box-success">
           
@@ -304,14 +304,24 @@
                 ======================================-->
 
                 <div class="form-group row">
+                    <div class="col-xs-12" style="padding-right:0px">
+                       <div class="col-xs-4">
+                        <label>Método de pago</label>
+                       </div>
+                       <div class="col-xs-4">
+                        <label>Efectivo</label>
+                       </div>
+                       <div class="col-xs-4">
+                        <label>Cambio</label>
+                       </div>
+                    </div>
                   
-                  <div class="col-xs-6" style="padding-right:0px">
+                  <div class="col-xs-4" style="padding-right:0px">
                     
                      <div class="input-group">
                   
                       <select class="form-control" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
-                        <option value="">Seleccione método de pago</option>
-                        <option value="Efectivo">Efectivo</option>
+                        <option selected="true" value="Efectivo">Efectivo</option>
                         <option value="TC">Tarjeta Crédito</option>
                         <option value="TD">Tarjeta Débito</option>                  
                       </select>    
@@ -320,7 +330,32 @@
 
                   </div>
 
-                  <div class="cajasMetodoPago"></div>
+                  <div class="cajasMetodoPago">
+                     <div class="col-xs-4">
+
+                      <div class="input-group">
+                    
+
+                        <span class="input-group-addon"><i class="ion ion-social-usd"></i></span> 
+
+                        <input type="number" class="form-control" id="nuevoValorEfectivo" name="nuevoValorEfectivo" placeholder="000000" required>
+
+                      </div>
+
+                    </div>
+
+                   <div class="col-xs-4" id="capturarCambioEfectivo" style="padding-left:0px">
+
+                    <div class="input-group">
+
+                    <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+
+                      <input type="number" class="form-control" id="nuevoCambioEfectivo" name="nuevoCambioEfectivo" placeholder="000000" readonly required>
+
+                    </div>
+
+                   </div>
+                  </div>
 
                   <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
 
@@ -333,7 +368,7 @@
           </div>
 
           <div class="box-footer">
-
+          <label><input type="checkbox" id="ticketEditar" name= "ticketEditar" value="1" checked> Ticket</label>
             <button type="submit" class="btn btn-primary pull-right">Guardar cambios</button>
 
           </div>
